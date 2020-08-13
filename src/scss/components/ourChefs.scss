@@ -1,0 +1,32 @@
+.bg-like-grey{
+    background-color: #f6f6f6;
+}
+
+.d-flex-home {
+    display: flex;
+    height: 500px;
+}
+
+.left-details {
+    margin-top: 70px;
+    width: 250px;
+}
+
+.right-details {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 55px;
+    flex: wrap;
+}
+
+.chef-img {
+    margin: 20px auto;
+    width: 250;
+    height: 200px;
+    
+}
+
+// .chef-img:hover {
+//     scale: 120%;
+//     transition: 1s;
+// }

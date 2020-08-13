@@ -24,12 +24,12 @@ function DisplayNumberOfProducts(props) {
     )
     return (
         <Dropdown >
-            <Button className="font-weight-bold" variant="success"> Display Number of Products:</Button>
+            <Button className="font-weight-bold" variant="success"> Display {props.productsPerPage} Products:</Button>
             <Dropdown.Toggle split variant="success" />
             <Dropdown.Menu >
                 {elmDisplayedNumbers}
             </Dropdown.Menu>
-      </Dropdown>
+        </Dropdown>
     )
 }
 

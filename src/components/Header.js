@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Container } from "react-bootstrap"; 
 import Logo from "./Logo";
 import Navigation from "./Navigation";
-import HamburgerMenu from "./HamburgerMenu";
 
 function Header() {
-    const [ isNavDisplay, setIsNavDisplay ]= useState(false);
-    const onUpdateNav = (isToggled) => {
-        setIsNavDisplay(!isToggled);
-    };
     return(
-        <Navbar variant="light" className="shadow-sm bg-white rounded">
+        <Navbar variant="light" className="shadow-sm bg-white rounded fixed-top">
             <Container >
                 <Logo />
-                <Navigation isNavDisplay={ isNavDisplay }/>
-                <HamburgerMenu onUpdateNav={ onUpdateNav }/>
+                <Navigation />
             </Container>   
         </Navbar>
     )

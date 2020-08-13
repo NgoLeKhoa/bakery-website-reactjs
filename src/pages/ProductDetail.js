@@ -20,7 +20,7 @@ function ProductDetail(props) {
             storedItems.forEach( storedItem => {
                 sumPrice += storedItem.price
 				totalAmount += storedItem.quantity
-				return sumPrice,totalAmount
+				return (sumPrice,totalAmount)
             })
             setTotalPrice(sumPrice)
             setTotalQuantity(totalAmount)
@@ -56,9 +56,8 @@ function ProductDetail(props) {
 		localStorage.setItem("items", JSON.stringify(items))
     }
 
-
     return(
-        <div className="bg-light p-3">
+        <div className="bg-light mt-5 pt-5 pb-5">
             <Container>
                 <div style={{ display: "flex", justifyContent:"space-between"}}>
                     <Link to="/shop" style={{ textDecoration: "none"}}>

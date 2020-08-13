@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ function Cart() {
             storedItems.forEach(storedItem => {
                 sumPrice += storedItem.price
                 totalAmount += storedItem.quantity
-                return totalAmount, sumPrice
+                return (totalAmount, sumPrice)
             })
             setTotalQuantity(totalAmount)
             setTotalPrice(sumPrice)
@@ -37,7 +37,7 @@ function Cart() {
             }
             totalAmount += item.quantity
             sumPrice += item.price
-            return totalAmount, sumPrice
+            return (totalAmount, sumPrice)
         })
         setTotalQuantity(totalAmount)
         setTotalPrice(sumPrice)
@@ -52,7 +52,7 @@ function Cart() {
         restItems.forEach(restItem => {
             totalAmount += restItem.quantity
             sumPrice += restItem.price
-            return totalAmount, sumPrice
+            return (totalAmount, sumPrice)
         })
         setTotalQuantity(totalAmount)
         setTotalPrice(sumPrice)
@@ -73,7 +73,15 @@ function Cart() {
         localStorage.setItem("items", JSON.stringify(restItems))
     }
     return (
-        <Container className="mt-3 mb-5" >
+        <>
+            <div >
+				<Image className="mt-5" src={require("../images/banner/banner-bg.jpg")} alt="banner" />
+				<h1 className="text-shop-h1">Cart</h1>
+				<Link to="/">
+					<h6 className="text-shop-h6" >Home</h6>
+				</Link>
+			</div>
+            <Container className="mb-5" style={{minHeight:"1000px"}}>
             <Row>
                 <Link to="/shop" style={{ textDecoration: "none" }}>
                     <div className="go-to-page">
@@ -82,23 +90,28 @@ function Cart() {
                     </div>
                 </Link>
             </Row>
-            <Row>
-                <Col md={12}>
-                    <CartTable 
-                        items={items} 
-                        onChangeQuantityAndPrice={onChangeQuantityAndPrice} 
-                        onRemoveItem={onRemoveItem}
-                        onRemoveAllItems={onRemoveAllItems} 
-                        totalPrice={totalPrice}
-                        totalQuantity={totalQuantity}
-                    />
-                </Col>
-                <Col md={7}></Col>
-                <Col md={5}>
-                    <CartTotal totalPrice={totalPrice} onProceedToCheckout={onProceedToCheckout} />
-                </Col>
-            </Row>
-        </Container>
+            {items.length === 0
+                ? <h2 className="text-center">Your cart is Empty</h2>
+                : <Row>
+                    <Col md={12}>
+                            <CartTable 
+                                items={items} 
+                                onChangeQuantityAndPrice={onChangeQuantityAndPrice} 
+                                onRemoveItem={onRemoveItem}
+                                onRemoveAllItems={onRemoveAllItems} 
+                                totalPrice={totalPrice}
+                                totalQuantity={totalQuantity}
+                            />
+                    </Col>
+                    <Col md={7}></Col>
+                    <Col md={5}>
+                        <CartTotal totalPrice={totalPrice} onProceedToCheckout={onProceedToCheckout} />
+                    </Col>
+                </Row>
+            }
+        </Container>	
+        </>
+        
     )
 }
 export default Cart;

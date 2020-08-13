@@ -23,8 +23,11 @@ function Product(props) {
                 <Card.Img className="img-zoom-in" variant="top" src={anItem.img} alt="imgProduct" />
             </Link>
             <Card.Body >
+            <div className="price-rounded">
+            <Card.Text>${anItem.price}</Card.Text>
+            </div>
                 <Card.Title>{anItem.name}</Card.Title>
-                <Card.Text>${anItem.price}.00</Card.Text>
+                
                 <Button className="text-white" variant="info" onClick={onClick}>Add To Cart</Button>
             </Card.Body>
         </Card>

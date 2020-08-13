@@ -2,7 +2,7 @@ import React from "react";
 import { Form, FormControl } from "react-bootstrap";
 
 function SearchBar(props) {
-
+    
     const onChange = (typeOfAction, e) => {
         props.onSearch(typeOfAction, e.target.value)
     }

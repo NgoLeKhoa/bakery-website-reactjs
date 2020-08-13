@@ -1,0 +1,39 @@
+.mt-10 {
+    margin-top: 100px;
+}
+.mb-8 { 
+    margin-bottom: 80px;
+}
+.line-under {
+    width: 100px;
+    margin: 10px auto;
+    border: 1px solid black;
+}
+
+.wrapper {
+    display: flex;
+    margin: 30px 0px 0px 0px;
+}
+
+.rectangle {
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+    height: 200px;
+    border: 1px dashed grey;
+    text-align: center;
+}
+
+.rectangle:hover {
+    background-color: #62c3e7;
+    color: white;
+    transition: 1s;
+}
+
+.text-color-grey {
+    color:grey;
+}
+.text-color-grey:hover {
+    color:white;
+    transition: 1s;
+}

@@ -1,6 +1,4 @@
 import React from "react"
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./css/custom.css";
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -14,6 +12,8 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Contact from "./pages/Contact";
 import ProductDetail from "./pages/ProductDetail";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.scss";
 
 function App() {
 	return (

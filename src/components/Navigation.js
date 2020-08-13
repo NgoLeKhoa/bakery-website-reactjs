@@ -2,10 +2,9 @@ import React from 'react';
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Navigation(props) {
-    const {isNavDisplay} = props;
+function Navigation() {
     return (
-        isNavDisplay && <Nav className="nav-position ">
+        <Nav className="nav-position ">
             <Link to="/" >
                 <span className="nav-title">Home</span>
             </Link>

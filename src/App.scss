@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+@import "./scss/custom.scss";
+@import "./scss/pages/shop.scss";
+@import "./scss/components/slider.scss";
+@import "./scss/components/servicesWeOffer.scss";
+@import "./scss/components/ourFeatures.scss";
+@import "./scss/components/ourChefs.scss";
+@import "./scss/components/topSaleProducts.scss";
+
