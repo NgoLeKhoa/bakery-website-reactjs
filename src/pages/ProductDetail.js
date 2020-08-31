@@ -8,30 +8,26 @@ import CartPopup from "../components/CartPopup";
 import products from "../utils/products";
 
 function ProductDetail(props) {
-    const [items, setItems] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
-    const [totalQuantity, setTotalQuantity] = useState(0);
+    const [cart, setCart] = useState({
+        items: [],
+        totalQuantity: 0,
+        totalPrice: 0,
+    });
 
     useEffect(() => {
-        let totalAmount = 0
-        let sumPrice = 0
-        if (localStorage && localStorage.getItem("items")) {
-            let storedItems = JSON.parse(localStorage.getItem("items"))
-            storedItems.forEach( storedItem => {
-                sumPrice += storedItem.price
-				totalAmount += storedItem.quantity
-				return (sumPrice,totalAmount)
-            })
-            setTotalPrice(sumPrice)
-            setTotalQuantity(totalAmount)
-            setItems(storedItems)
-        }
-    }, [localStorage.getItem("items")])
+        if (localStorage && localStorage.getItem("cart")) {
+			const storedCart = JSON.parse(localStorage.getItem("cart"))
+			setCart(storedCart)
+		} else {
+			setCart({ ...cart, items: [], totalQuantity: 0, totalPrice: 0 })
+		}
+    }, [setCart])
 
     const onAddToCart = (anItem) => {
         let index = -1
         let totalAmount = 0
         let sumPrice = 0
+        let items = cart.items
 		items.forEach((item, idx) => {
 			if (item.id === anItem.id) {
 				index = idx;
@@ -48,12 +44,10 @@ function ProductDetail(props) {
 		items.forEach( item => {
             sumPrice += item.price
 			totalAmount += item.quantity
-			return sumPrice, totalAmount
+			return (sumPrice, totalAmount)
         })
-        setTotalPrice(sumPrice)
-		setTotalQuantity(totalAmount)
-		setItems(items)
-		localStorage.setItem("items", JSON.stringify(items))
+        setCart({ ...cart, items: items, totalQuantity: totalAmount, totalPrice: sumPrice })
+		localStorage.setItem("cart", JSON.stringify({ ...cart, items: items, totalQuantity: totalAmount, totalPrice: sumPrice }))
     }
 
     return(
@@ -75,7 +69,7 @@ function ProductDetail(props) {
                 </div>
                 <Detail {...props} products={products} onAddToCart={onAddToCart}/>
             </Container>  
-            <CartPopup items={items} totalQuantity={totalQuantity} totalPrice={totalPrice}/>
+            <CartPopup cart={cart}/>
         </div>     
     )
 }

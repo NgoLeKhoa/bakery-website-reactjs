@@ -7,19 +7,20 @@ import BillingDetails from "../components/BillingDetails";
 import Order from "../components/Order";
 
 function Checkout() {
-    const [items, setItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
+    const [cart, setCart] = useState({
+        items: [],
+        totalQuantity: 0,
+        totalPrice: 0,
+    });
 
     useEffect(() => {
-        let sumPrice = 0;
-        const storedItems = JSON.parse(localStorage.getItem("items"))
-        storedItems.forEach(storedItem => {
-            sumPrice += storedItem.price
-            return sumPrice
-        })
-        setTotalPrice(sumPrice)
-        setItems(storedItems)
-    }, [setItems])
+        if (localStorage && localStorage.getItem("cart")) {
+			const storedCart = JSON.parse(localStorage.getItem("cart"))
+			setCart(storedCart)
+		} else {
+			setCart({ ...cart, items: [], totalQuantity: 0, totalPrice: 0 })
+		}
+    }, [setCart])
 
     const onPlaceOrder = (orderForm) => {
         localStorage.setItem("order", JSON.stringify(orderForm))
@@ -50,7 +51,7 @@ function Checkout() {
                     </Col>
                     <Col md={5}>
                         <h2>Your Order</h2>
-                        <Order items={items} totalPrice={totalPrice} />
+                        <Order items={cart.items} totalPrice={cart.totalPrice} />
                     </Col>
                 </Row>
             </Container>

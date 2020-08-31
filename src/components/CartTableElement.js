@@ -29,7 +29,7 @@ function CartTableElement(props) {
             </td>
             <td className="align-middle">{item.name}</td>
             <td className="text-center align-middle">$&nbsp;{item.unitPrice}.00</td>
-            <td >
+            <td>
                 <QuantityChangeButton quantity={item.quantity} onChangeQuantity={onChangeQuantity} />
             </td>
             <td className="text-center align-middle">$&nbsp;{item.price}.00</td>

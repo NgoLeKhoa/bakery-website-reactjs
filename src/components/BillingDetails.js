@@ -11,7 +11,7 @@ function BillingDetails(props) {
         address: "",
         addtions: "",
         date: (new Date()).toLocaleDateString(),
-        itemsList: JSON.parse(localStorage.getItem("items")),
+        cart: JSON.parse(localStorage.getItem("cart")),
     })
     const [show, setShow] = useState(false);
 

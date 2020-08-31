@@ -30,7 +30,7 @@ function Detail(props) {
 						<ListGroup.Item className="bg-light mt-2"><h2>{anItem.name}</h2></ListGroup.Item>
 						<ListGroup.Item className="bg-light mt-2">{product.description}</ListGroup.Item>
 						<ListGroup.Item className="bg-light mt-2 mb-2">
-							<strong>Price: ${anItem.price}.00</strong>
+							<strong>Price: $&nbsp;{anItem.price}.00</strong>
 						</ListGroup.Item>
 						<ListGroup.Item className="bg-light">
 							<Button 

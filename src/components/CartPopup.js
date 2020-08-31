@@ -4,8 +4,9 @@ import { Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function CartPopup(props) {
+    const {items, totalQuantity, totalPrice} = props.cart
     const [isDisplayMiniCart, setIsDisplayMiniCart] = useState(false);
-
+    console.log(items)
     const openMiniCart = () => {
         setIsDisplayMiniCart(!isDisplayMiniCart)
     }
@@ -17,11 +18,10 @@ function CartPopup(props) {
         <div>
             <button className="open-mini-cart" onClick={openMiniCart}>
                 Check Your Cart &nbsp;
-                {props.totalQuantity !== 0
-                    ? <Badge className="cart-popup-quantity" variant="danger">{props.totalQuantity}</Badge>
+                {totalQuantity !== 0
+                    ? <Badge className="cart-popup-quantity" variant="danger">{totalQuantity}</Badge>
                     : ""
                 }
-
             </button>
             <div
                 className="form-popup"
@@ -29,7 +29,7 @@ function CartPopup(props) {
             >
                 <form className="form-container">
                     <h1>Cart</h1>
-                    <MiniCartTable items={props.items} totalPrice={props.totalPrice} />
+                    <MiniCartTable items={items} totalPrice={totalPrice} />
                     <Link to="/cart">
                         <button type="submit" className="btn" >Go To Cart</button>
                     </Link>

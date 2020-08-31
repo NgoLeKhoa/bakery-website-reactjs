@@ -7,29 +7,26 @@ import CartTable from "../components/CartTable";
 import CartTotal from "../components/CartTotal";
 
 function Cart() {
-    const [items, setItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [totalQuantity, setTotalQuantity] = useState(0);
+    const [cart, setCart] = useState({
+        items: [],
+        totalQuantity: 0,
+        totalPrice: 0,
+    });
 
     useEffect(() => {
-        let sumPrice = 0;
-        let totalAmount = 0;
-        if (localStorage && localStorage.getItem("items")) {
-            const storedItems = JSON.parse(localStorage.getItem("items"))
-            storedItems.forEach(storedItem => {
-                sumPrice += storedItem.price
-                totalAmount += storedItem.quantity
-                return (totalAmount, sumPrice)
-            })
-            setTotalQuantity(totalAmount)
-            setTotalPrice(sumPrice)
-            setItems(storedItems)
-        }
-    }, [setItems])
+        if (localStorage && localStorage.getItem("cart")) {
+			const storedCart = JSON.parse(localStorage.getItem("cart"))
+			setCart(storedCart)
+		} else {
+			setCart({ ...cart, items: [], totalQuantity: 0, totalPrice: 0 })
+		}
+    }, [setCart])
 
     const onChangeQuantityAndPrice = (anItemID, value) => {
         let sumPrice = 0;
         let totalAmount = 0;
+        let items = cart.items;
+
         items.forEach(item => {
             if (item.id === anItemID) {
                 item.quantity = value
@@ -39,38 +36,40 @@ function Cart() {
             sumPrice += item.price
             return (totalAmount, sumPrice)
         })
-        setTotalQuantity(totalAmount)
-        setTotalPrice(sumPrice)
-        setItems(items)
-        localStorage.setItem("items", JSON.stringify(items))
+        setCart({ ...cart, items: items, totalQuantity: totalAmount, totalPrice: sumPrice })
+        localStorage.setItem("cart", JSON.stringify({ ...cart, items: items, totalQuantity: totalAmount, totalPrice: sumPrice }))
     }
 
     const onRemoveItem = (itemID) => {
         let sumPrice = 0;
         let totalAmount = 0;
+        let items = cart.items;
         let restItems = items.filter(item => item.id !== itemID)
         restItems.forEach(restItem => {
             totalAmount += restItem.quantity
             sumPrice += restItem.price
             return (totalAmount, sumPrice)
         })
-        setTotalQuantity(totalAmount)
-        setTotalPrice(sumPrice)
-        setItems(restItems)
-        localStorage.setItem("items", JSON.stringify(restItems))
+        if (totalAmount === 0 || sumPrice === 0) {
+            setCart({ ...cart, items: [], totalQuantity: 0, totalPrice: 0 })
+            localStorage.removeItem("cart")
+        } else {
+            setCart({ ...cart, items: restItems, totalQuantity: totalAmount, totalPrice: sumPrice })
+            localStorage.setItem("cart", JSON.stringify({ ...cart, items: restItems, totalQuantity: totalAmount, totalPrice: sumPrice }))
+        }
+        
     }
 
     const onRemoveAllItems = () => {
-        setItems([])
-        setTotalPrice(0)
-        setTotalQuantity(0)
-        localStorage.removeItem("items")
+        setCart({ ...cart, items: [], totalQuantity: 0, totalPrice: 0 })
+        localStorage.removeItem("cart")
     }
 
     const onProceedToCheckout = () => {
+        let items = cart.items;
         let restItems = items.filter(item => item.quantity !== 0)
-        setItems(restItems)
-        localStorage.setItem("items", JSON.stringify(restItems))
+        setCart({ ...cart, items: restItems})
+        localStorage.setItem("cart", JSON.stringify({ ...cart, items: restItems}))
     }
     return (
         <>
@@ -90,22 +89,22 @@ function Cart() {
                     </div>
                 </Link>
             </Row>
-            {items.length === 0
+            {cart.items.length === 0
                 ? <h2 className="text-center">Your cart is Empty</h2>
                 : <Row>
                     <Col md={12}>
                             <CartTable 
-                                items={items} 
+                                items={cart.items} 
                                 onChangeQuantityAndPrice={onChangeQuantityAndPrice} 
                                 onRemoveItem={onRemoveItem}
                                 onRemoveAllItems={onRemoveAllItems} 
-                                totalPrice={totalPrice}
-                                totalQuantity={totalQuantity}
+                                totalPrice={cart.totalPrice}
+                                totalQuantity={cart.totalQuantity}
                             />
                     </Col>
                     <Col md={7}></Col>
                     <Col md={5}>
-                        <CartTotal totalPrice={totalPrice} onProceedToCheckout={onProceedToCheckout} />
+                        <CartTotal totalPrice={cart.totalPrice} onProceedToCheckout={onProceedToCheckout} />
                     </Col>
                 </Row>
             }
