@@ -74,7 +74,7 @@ function Cart() {
     return (
         <>
             <div >
-				<Image className="mt-5" src={require("../images/banner/banner-bg.jpg")} alt="banner" />
+				<Image src={require("../images/banner/banner-bg.jpg")} alt="banner" />
 				<h1 className="text-shop-h1">Cart</h1>
 				<Link to="/">
 					<h6 className="text-shop-h6" >Home</h6>

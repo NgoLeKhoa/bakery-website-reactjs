@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import TopSaleProducts from "../components/TopSaleProducts";
 
 function Shop() {
-    const [isLogin, setIsLogin] = useState(false);
+    // const [isLogin, setIsLogin] = useState(false);
     const [cart, setCart] = useState({
         items: [],
         totalQuantity: 0,
@@ -41,7 +41,7 @@ function Shop() {
             setCart({ ...cart });
         }
         setProductsList(products);
-    }, [setCart, setProductsList]);
+    }, []);
 
     const onChangeDisplayedNumberOfProducts = (displayedNumber) => {
         setProductsPerPage(displayedNumber);
@@ -195,10 +195,10 @@ function Shop() {
     };
 
     return (
-        <div className="bg-light pt-4 mt-3">
+        <div className="bg-light mt-3">
             <div>
                 <Image
-                    className="pb-5"
+                    
                     src={require("../images/banner/banner-bg.jpg")}
                     alt="banner"
                 />

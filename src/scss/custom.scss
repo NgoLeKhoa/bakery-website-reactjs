@@ -1,214 +1,210 @@
 /* Header */
-.nav-position {
-	flex-grow: 1;
-	justify-content: center;
-}
 
 .nav-title {
-	margin-left: 30px;
-	color: grey;
-	font-weight: bold;
-}
+    margin-left: 30px;
+    color: grey;
+    font-weight: bold;
+    &:link {
+        font-size: 17px;
+        color: #454545;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        line-height: 70px;
+        transition: all 300ms ease;
+    }
 
-.nav-title:link{
-	text-decoration: none;
-	color: black;
-}
-
-.nav-title:visited{
-	text-decoration: none;
-	color: black;
-}
-
-.nav-title:hover {
-	font-weight: bold;
-	color: #f195b2;
-	text-decoration: none;
+    &:visited {
+        text-decoration: none;
+        color: black;
+    }
+    &:hover {
+        font-weight: bold;
+        color: #f195b2;
+        text-decoration: none;
+    }
 }
 
 .hamburger-menu {
-	display: inline-block;
-	cursor: pointer;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .bar1,
 .bar2,
 .bar3 {
-	width: 35px;
-	height: 5px;
-	background-color: #333;
-	margin: 6px 0;
-	transition: 0.4s;
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
 }
 
 .change .bar1 {
-	-webkit-transform: rotate(-45deg) translate(-9px, 6px);
-	transform: rotate(-45deg) translate(-9px, 6px);
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
 }
 
 .change .bar2 {
-	opacity: 0;
+    opacity: 0;
 }
 
 .change .bar3 {
-	-webkit-transform: rotate(45deg) translate(-8px, -8px);
-	transform: rotate(45deg) translate(-8px, -8px);
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
 }
-
 
 /* Background All Pages */
 .main-background {
-	background-color: whitesmoke;
+    background-color: whitesmoke;
 }
 
-
 .description-text {
-	text-align: justify;
+    text-align: justify;
     text-justify: inter-word;
 }
 
 /* Product */
 .product {
-	width: 16rem;
-	margin-top: 15px;
-	margin-bottom: 15px;
+    min-width: 16rem;
+    max-width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
 }
 
 .img-zoom-in {
-	transition: transform .5s;
+    transition: transform 0.5s;
 }
 
 .img-zoom-in:hover {
-	-ms-transform: scale(1.1); /* IE 9 */
-	-webkit-transform: scale(1.1); /* Safari 3-8 */
-	transform: scale(1.1);
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
 }
 
 /* Footer */
 
 .footer-area {
-	background: #303339;
-	overflow: hidden;
-	border-radius: 0;
+    background: #303339;
+    overflow: hidden;
+    border-radius: 0;
 }
 
 .footer-area-inner {
-	margin: 20px 30px;
+    margin: 20px 30px;
 }
 
 .footer-area-column {
-	border-radius: 0;
-	border-color: transparent;
-	background-color: #303339;
+    border-radius: 0;
+    border-color: transparent;
+    background-color: #303339;
 }
 
 .footer-area-column-title {
-	color: white;
+    color: white;
 }
 
 .footer-area-column-text {
-	color: #a7a5a1;
+    color: #a7a5a1;
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-mini-cart {
-	background-color: #555;
-	color: white;
-	padding: 16px 20px;
-	border: none;
-	cursor: pointer;
-	opacity: 0.8;
-	position: fixed;
-	bottom: 50px;
-	right: 28px;
-	width: 240px;
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 50px;
+    right: 28px;
+    width: 240px;
 }
 
 /* The popup form - hidden by default */
 .form-popup {
-	display: none;
-	position: fixed;
-	bottom: 0;
-	right: 15px;
-	border: 3px solid #f1f1f1;
-	z-index: 9;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
 }
 
 /* Add styles to the form container */
 .form-container {
-	max-width: 300px;
-	padding: 10px;
-	background-color: white;
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
 }
-
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-	background-color: #4caf50;
-	color: white;
-	padding: 16px 20px;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	margin-bottom: 10px;
-	opacity: 0.8;
+    background-color: #4caf50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
 }
 
 /* Add a red background color to the cancel button */
 .form-container .close-mini-cart {
-	background-color: red;
+    background-color: red;
 }
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover,
 .open-button:hover {
-	opacity: 1;
+    opacity: 1;
 }
 
 .cart-popup-quantity {
-	font-size: 20px;
+    font-size: 20px;
 }
 
 .minicart-container {
-	width: 100%;
+    width: 100%;
 }
 
 .minicart-table {
-	display: flex;
-	flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .minicart-img {
-	width: 60px;
-	height: 80px;
-	margin-right: 10px;
-	margin-bottom: 10px;
+    width: 60px;
+    height: 80px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .minicart-text-container {
-	flex-direction: column;
+    flex-direction: column;
 }
 
 .minicart-name {
-	margin: 2px;
+    margin: 2px;
 }
 
 .minicart-quantity {
-	margin: 2px
+    margin: 2px;
 }
 
 .minicart-price {
-	margin: 2px
+    margin: 2px;
 }
 
 .line-break {
-	border-top: 2px solid orange;
+    border-top: 2px solid orange;
 }
 
 .minicart-total-price {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
-
 
 .mt-8 {
     margin-top: 80px;
@@ -219,8 +215,8 @@
 
 .title {
     margin-left: 15px;
-    margin-bottom: 5px; 
-    text-align: left; 
+    margin-bottom: 5px;
+    text-align: left;
     font-weight: bold;
 }
 
@@ -229,79 +225,85 @@
 }
 
 .price-btn {
-	width: 110px;
-	font-weight: bold;
+    width: 110px;
+    font-weight: bold;
 }
 
 .group-change-quantity {
-	display: flex;
-	justify-content: center;
-	margin-top: 10px;
-	height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    height: 50px;
 }
 
 .btn-decrease-quantity {
-	border-radius: 10px 0px 0px 10px;
-	font-weight: bold;
-	border-color: black;
+    border-radius: 10px 0px 0px 10px;
+    font-weight: bold;
+    border-color: black;
 }
 
 .btn-decrease-quantity:hover {
-	border-color: black;
+    border-color: black;
 }
 
 .btn-increase-quantity {
-	border-radius: 0px 10px 10px 0px;
-	font-weight: bold;
-	border-color: black;
+    border-radius: 0px 10px 10px 0px;
+    font-weight: bold;
+    border-color: black;
 }
 
 .btn-increase-quantity:hover {
-	border-color: black;
+    border-color: black;
 }
 
-.change-quantity{
-	width: 50px;
-	border-radius: 0px;
-	text-align: center;
+.change-quantity {
+    width: 50px;
+    border-radius: 0px;
+    text-align: center;
 }
 
 .cancel-bar-1 {
-	width: 35px;
-	height: 5px;
-	background-color: #333;
-	margin: 6px 0;
-	transform: rotate(-45deg) translate(-7px, 15px);
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transform: rotate(-45deg) translate(-7px, 15px);
 }
 
 .cancel-bar-2 {
-	width: 35px;
-	height: 5px;
-	background-color: #333;
-	margin: 6px 0;
-	transform: rotate(45deg) translate(7px, 0px);
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transform: rotate(45deg) translate(7px, 0px);
 }
 
 .cancel-circle {
-	width: 60px;
-	height: 60px;
-	border: 5px solid;
-	border-color: #333;
-	border-radius: 50%;
-	margin: 6px 0;
-	cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border: 5px solid;
+    border-color: #333;
+    border-radius: 50%;
+    margin: 6px 0;
+    cursor: pointer;
 }
 
 .go-to-page {
-	padding: 10px;
-	font-weight: bold;
-	font-size: xx-large;
-	color: #fd7e14;
+    padding: 10px;
+    font-weight: bold;
+    font-size: xx-large;
+    color: #fd7e14;
 }
 
 .go-to-page:hover {
-	color: #14edfd;
+    color: #14edfd;
 }
 
-
-
+@media (max-width: 575px) {
+    .nav-title {
+        border-bottom: 1px solid #dcdcdc;
+        &:link {
+            line-height: 48px;
+        }
+    }
+}

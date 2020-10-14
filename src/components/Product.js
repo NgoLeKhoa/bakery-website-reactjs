@@ -27,7 +27,6 @@ function Product(props) {
             <Card.Text>${anItem.price}</Card.Text>
             </div>
                 <Card.Title>{anItem.name}</Card.Title>
-                
                 <Button className="text-white" variant="info" onClick={onClick}>Add To Cart</Button>
             </Card.Body>
         </Card>

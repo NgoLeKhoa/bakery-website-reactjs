@@ -1,39 +1,99 @@
 .mt-10 {
     margin-top: 100px;
 }
-.pb-10 {
-    padding-bottom: 100px;
-}
-.mb-8 { 
+
+.mb-8 {
     margin-bottom: 80px;
 }
 .pt-5 {
     padding-top: 50px;
 }
 
-.bg-like-pink {
-    background-color: #f195b2;
-}
-
-.justify-space-between {
-    justify-content: space-between;
-}
 
 .features-text-black {
-    color: black
+    color: black;
 }
 
 .btn-go-to-shop {
-    background-color: white;
-    color: rgb(100, 98, 98);
-    border:none;
-    position: relative;
-    left: 965px;
-    top: -50px;
+    background-color: #f195b2;
+    color: white;
+    border: 1px solid #f195b2;
     font-weight: 500;
+    float: right;
+    &:visited {
+        color:  #f195b2;
+        background-color: white;
+        border: 1px solid #f195b2;
+    }
+
+    &:hover {
+        color:  #f195b2;
+        background-color: white;
+        border: 1px solid #f195b2;
+    }
+    
+    &:active {
+        color:  #f195b2;
+        background-color: white;
+        border: 1px solid #f195b2;
+    }
 }
 
-.btn-go-to-shop:hover {
-    color: #f195b2;
-    background-color: white;   
+.first-row {
+    justify-content: space-between;
+}
+
+.text-modified {
+    color: #3e606b;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    font-size: 38px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.our-feature-bg {
+    background: url("../../images/welcome-bg.jpg") no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+    padding-bottom: 100px;
+}
+
+.our-feature-bg::before {
+    content: "";
+    background: url("../../images/w-left-techture.png") no-repeat scroll center center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 701px;
+    width: 250px;
+    z-index: -1;
+}
+
+.our-feature-bg::after {
+    content: "";
+    background: url("../../images/w-right-techture.png") no-repeat scroll center center;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 701px;
+    width: 250px;
+    z-index: -1;
+}
+
+@media (max-width: 575px) {
+    .our-feature-bg {
+        padding-bottom: 50px;
+        &::before {
+            display: none;
+        }
+        &::after {
+            display: none;
+        }
+    }
+    .btn-go-to-shop {
+        float:left;
+    }
 }
